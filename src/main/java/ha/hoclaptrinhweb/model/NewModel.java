@@ -2,11 +2,14 @@ package ha.hoclaptrinhweb.model;
 
 public class NewModel extends AbstractModel<NewModel>{
 	private String title;
+	
 	private String thumbnail;
+	
 	private String shortDescription;
+	
 	private String content;
+	
 	private Long categoryId;
-	private String categoryCode;
 	
 	public String getTitle() {
 		return title;

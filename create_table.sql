@@ -2,19 +2,14 @@ use managementweb;
 
 CREATE TABLE role(
   id bigint NOT NULL PRIMARY KEY auto_increment,
-  name VARCHAR(255) NOT NULL,
-  code VARCHAR(255) NOT NULL,
-  createddate TIMESTAMP NULL,
-  modifieddate TIMESTAMP NULL,
-  createdby VARCHAR(255) NULL,
-  modifiedby VARCHAR(255) NULL
+  name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE user (
   id bigint NOT NULL PRIMARY KEY auto_increment,
   username VARCHAR(150) NOT NULL,
   password VARCHAR(150) NOT NULL,
-  fullname VARCHAR(150) NULL,
+  fullname NVARCHAR(150) NULL,
   status int NOT NULL,
   roleid bigint NOT NULL,
   createddate TIMESTAMP NULL,
@@ -27,8 +22,8 @@ ALTER TABLE user ADD CONSTRAINT fk_user_role FOREIGN KEY (roleid) REFERENCES rol
 
 CREATE TABLE news (
   id bigint NOT NULL PRIMARY KEY auto_increment,
-  title VARCHAR(255) NULL,
-  thumbnail VARCHAR(255) NULL,
+  title NVARCHAR(255) NULL,
+  thumbnail NVARCHAR(255) NULL,
   shortdescription TEXT NULL,
   content TEXT NULL,
   categoryid bigint NOT NULL,
@@ -40,8 +35,7 @@ CREATE TABLE news (
 
 CREATE TABLE category (
   id bigint NOT NULL PRIMARY KEY auto_increment,
-  name VARCHAR(255) NOT NULL,
-  code VARCHAR(255) NOT NULL,
+  name NVARCHAR(255) NOT NULL,
   createddate TIMESTAMP NULL,
   modifieddate TIMESTAMP NULL,
   createdby VARCHAR(255) NULL,
@@ -55,6 +49,7 @@ CREATE TABLE comment (
   content TEXT NOT NULL,
   user_id bigint NOT NULL,
   new_id bigint NOT NULL,
+  reply_id bigint NULl,
   createddate TIMESTAMP NULL,
   modifieddate TIMESTAMP NULL,
   createdby VARCHAR(255) NULL,
@@ -63,19 +58,3 @@ CREATE TABLE comment (
 
 ALTER TABLE comment ADD CONSTRAINT fk_comment_user FOREIGN KEY (user_id) REFERENCES user(id);
 ALTER TABLE comment ADD CONSTRAINT fk_comment_news FOREIGN KEY (new_id) REFERENCES news(id);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
