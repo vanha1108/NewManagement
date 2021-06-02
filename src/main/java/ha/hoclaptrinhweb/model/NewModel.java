@@ -41,10 +41,5 @@ public class NewModel extends AbstractModel<NewModel>{
 	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
-	public String getCategoryCode() {
-		return categoryCode;
-	}
-	public void setCategoryCode(String categoryCode) {
-		this.categoryCode = categoryCode;
-	}
+
 }
