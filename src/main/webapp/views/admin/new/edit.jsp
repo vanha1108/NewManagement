@@ -64,13 +64,69 @@
                         </div>
                         <br/>
                         <br/>
+
+
+<%--                        <div class="form-group">--%>
+<%--                            <label class="col-sm-3 control-label no-padding-right">Hình đại diện</label>--%>
+<%--                            <div class="col-sm-9">--%>
+<%--                                <input type="text" class="form-control" id="thumbnail" name="thumbnail"--%>
+<%--                                       value="${model.thumbnail}"/>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+
                         <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right">Hình đại diện</label>
+                            <label class="col-sm-3 control-label no-padding-right">Hình bài viết</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="thumbnail" name="thumbnail"
-                                       value="${model.thumbnail}"/>
+                                <c:if test="${not empty model.thumbnail}">
+                                    <img src="${model.thumbnail}" style="cursor: pointer" onclick="$('#image').click()" id="img_url" alt="Your image" width="80px" height="60px"/>
+                                    <input type="file" style="display: none" class="form-control" id="image" name="image" value="${model.thumbnail}" />
+                                    <script>
+                                        $("#image").change(function(){
+                                            readURL(this);
+                                        });
+                                        function readURL(input) {
+                                            if (input.files && input.files[0]) {
+                                                var reader = new FileReader();
+                                                reader.onload = function (e) {
+                                                    $('#img_url').attr('src', e.target.result);
+                                                }
+                                                reader.readAsDataURL(input.files[0]);
+                                            }
+                                        }
+                                    </script>
+                                </c:if>
+                                <c:if test="${empty model.thumbnail}">
+                                    <img src="" onclick="$('#image').click()" style="display: none;" id="editImg" alt="Your image" width="80px" height="60px"/>
+                                    <input type="file" style="margin-bottom: 5px;" class="form-control" id="image" name="image"/>
+                                    <script>
+                                        $("#image").change(function(){
+                                            if (document.querySelector('#image').files[0]) {
+                                                $('#editImg').css({
+                                                    'cursor': 'pointer',
+                                                    'display': 'block'
+                                                });
+                                                $('#image').css({
+                                                    'display': 'none'
+                                                });
+                                                readURL(this);
+                                            }
+                                        });
+                                        function readURL(input) {
+                                            if (input.files && input.files[0]) {
+                                                var reader = new FileReader();
+
+                                                reader.onload = function (e) {
+                                                    $('#editImg').attr('src', e.target.result);
+                                                }
+                                                reader.readAsDataURL(input.files[0]);
+                                            }
+                                        }
+                                    </script>
+                                </c:if>
                             </div>
                         </div>
+
+                        <br/>
                         <br/>
                         <br/>
                         <div class="form-group">
@@ -114,14 +170,27 @@
 </div>
 <script>
 
+    const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
 
-    $('#btnAddOrUpdateNew').click(function (e) {
+    $('#btnAddOrUpdateNew').click(async function (e) {
         e.preventDefault();
         var data = {};
         var formData = $('#formSubmit').serializeArray();
         $.each(formData, function (i, v) {
             data["" + v.name + ""] = v.value;
         });
+        console.log("HEREEEEEEEEEEEEEEEE");
+        if (document.querySelector('#image').files[0]) {
+            var file = document.querySelector('#image').files[0];
+            console.log("HHHHHHHHHH:   "+file.fileName);
+            var endcodeString  = await toBase64(file);
+            data['thumbnail'] = endcodeString;
+        }
         data['content'] = CKEDITOR.instances['content'].getData();
         var id = $('#id').val();
         if (id == "") {
