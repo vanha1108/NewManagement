@@ -1,7 +1,9 @@
 package ha.hoclaptrinhweb.controller.web;
 
 import ha.hoclaptrinhweb.constant.SystemConstant;
+import ha.hoclaptrinhweb.model.CategoryModel;
 import ha.hoclaptrinhweb.model.UserModel;
+import ha.hoclaptrinhweb.service.ICategoryService;
 import ha.hoclaptrinhweb.service.IUserService;
 import ha.hoclaptrinhweb.utils.FormUtil;
 import ha.hoclaptrinhweb.utils.SessionUtil;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 @WebServlet(urlPatterns = { "/trang-chu", "/dang-nhap", "/thoat" })
@@ -23,6 +27,9 @@ public class HomeController extends HttpServlet {
 
 	@Inject
 	private IUserService userService;
+
+	@Inject
+	private ICategoryService categoryService;
 
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
@@ -45,6 +52,24 @@ public class HomeController extends HttpServlet {
 			SessionUtil.getInstance().removeValue(request, "USERMODEL");
 			response.sendRedirect(request.getContextPath() + "/trang-chu");
 		} else {
+			List<CategoryModel> topCategory  = categoryService.findAll();
+			List<CategoryModel>  categoryChildList = new ArrayList<>();
+			CategoryModel categoryDropdown = new CategoryModel();
+
+			if(topCategory.size()>9){
+				for(int i = 9; i<topCategory.size(); i++){
+					categoryChildList.add(topCategory.get(i));
+				}
+
+
+				while (topCategory.size() > 9){
+					topCategory.remove(9);
+				}
+			}
+
+			request.setAttribute("topCategory", topCategory);
+			request.setAttribute("childCategory",categoryChildList);
+
 			RequestDispatcher rd = request.getRequestDispatcher("views/web/home.jsp");
 			rd.forward(request, response);
 		}
