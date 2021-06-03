@@ -10,7 +10,7 @@ public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategory
 
     @Override
     public List<CategoryModel> findAll() {
-        String sql = "SELECT * FROM category";
+        String sql = "SELECT * FROM category order by name";
         return query(sql, new CategoryMapper());
     }
 
@@ -30,9 +30,8 @@ public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategory
 
     @Override
     public Long save(CategoryModel categoryModel) {
-        StringBuilder sql = new StringBuilder("INSERT INTO category (name,count_use)");
-        sql.append("createddate, createdby) VALUES (?)");
-        return insert(sql.toString(), categoryModel.getName());
+        StringBuilder sql = new StringBuilder("INSERT INTO category (name,count_use) VALUES (?,?)");
+        return insert(sql.toString(), categoryModel.getName(),categoryModel.getCount_use());
     }
 
     @Override

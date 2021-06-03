@@ -40,6 +40,24 @@
                 </li>
             </ul>
         </li>
+        <c:if test="${role == 'ADMIN'}">
+        <li >
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text"></span>
+                Quản lý tài khoản
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a href='<c:url value="/admin-user?type=list&page=1&maxPageItem=5&sortName=fullname&sortBy=asc"/>'>
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Danh sách tài khoản
+                    </a>
+                    <b class="arrow"></b>
+            </ul>
+        </li>
+        </c:if>
     </ul>
     <div class="sidebar-toggle sidebar-collapse">
         <i class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

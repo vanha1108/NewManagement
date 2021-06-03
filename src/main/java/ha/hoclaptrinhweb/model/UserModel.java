@@ -7,7 +7,15 @@ public class UserModel extends AbstractModel<UserModel> {
     private String password;
     private int status;
     private Long roleId;
+
+
     private RoleModel role = new RoleModel();
+
+    private  String roleDisplay = "Quản lý bài viết";
+
+    public void setRoleDisplay(String roleDisplay) {
+        this.roleDisplay = roleDisplay;
+    }
 
     public String getUserName() {
         return userName;
@@ -55,5 +63,9 @@ public class UserModel extends AbstractModel<UserModel> {
 
     public void setRole(RoleModel role) {
         this.role = role;
+    }
+
+    public String getRoleDisplay() {
+        return roleDisplay;
     }
 }

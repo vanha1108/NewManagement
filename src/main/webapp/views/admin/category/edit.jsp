@@ -11,7 +11,7 @@
         <div class="page-content">
             <div class="row">
                 <div class="col-xs-12">
-                    <form id="formSubmit">
+                    <form id="formSubmit" method="post">
                         <c:if test="${not empty messageParam}">
                             <div class="alert alert-${alert}" role="alert">
                                     ${messageParam}
@@ -48,16 +48,16 @@
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <c:if test="${not empty model.id}">
-                                    <button type="submit" class="btn btn-white btn-warning btn-bold" value="Cập nhật"
+                                    <a href='<c:url value="/admin-category?type=update"/>'
                                            id="btnAddOrUpdateNew">
-                                        Cập nhật
-                                    </button>
+                                        <input class="btn btn-white btn-warning btn-bold" type="submit" value="Cập nhật"/>
+                                    </a>
                                 </c:if>
                                 <c:if test="${empty model.id}">
-                                    <button type="submit" class="btn btn-white btn-warning btn-bold" value="Thêm"
+                                    <a href='<c:url value="/admin-category?type=add"/>'
                                            id="btnAddOrUpdateNew">
-                                        Thêm
-                                    </button>
+                                        <input class="btn btn-white btn-warning btn-bold" type="submit" value="Thêm"/>
+                                    </a>
                                 </c:if>
                             </div>
                         </div>

@@ -2,6 +2,7 @@ package ha.hoclaptrinhweb.controller.admin;
 
 import ha.hoclaptrinhweb.constant.SystemConstant;
 import ha.hoclaptrinhweb.model.NewModel;
+import ha.hoclaptrinhweb.model.UserModel;
 import ha.hoclaptrinhweb.paging.PageRequest;
 import ha.hoclaptrinhweb.paging.Pageble;
 import ha.hoclaptrinhweb.service.ICategoryService;
@@ -9,6 +10,7 @@ import ha.hoclaptrinhweb.service.INewService;
 import ha.hoclaptrinhweb.sort.Sorter;
 import ha.hoclaptrinhweb.utils.FormUtil;
 import ha.hoclaptrinhweb.utils.MessageUtil;
+import ha.hoclaptrinhweb.utils.SessionUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -50,6 +52,11 @@ public class NewController extends HttpServlet {
             request.setAttribute("categories", categoryService.findAll());
             viewPath = "views/admin/new/edit.jsp";
         }
+
+        UserModel userRole = (UserModel) SessionUtil.getInstance().getValue(request,"USERMODEL");
+
+        request.setAttribute(SystemConstant.ROLE, userRole.getRole().getName());
+
         MessageUtil.showMessage(request);
         request.setAttribute(SystemConstant.MODEL, model);
         RequestDispatcher rd = request.getRequestDispatcher(viewPath);

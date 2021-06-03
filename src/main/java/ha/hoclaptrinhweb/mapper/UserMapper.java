@@ -19,11 +19,13 @@ public class UserMapper implements  RowMapper<UserModel>{
             user.setStatus(resultSet.getInt("status"));
             user.setRoleId(resultSet.getLong("roleId"));
             try {
-                RoleModel roleModel = new RoleModel();
-                roleModel.setName(resultSet.getString("name"));
-                user.setRole(roleModel);
+                if(resultSet.getString("name")!=null){
+                    RoleModel roleModel = new RoleModel();
+                    roleModel.setName(resultSet.getString("name"));
+                    user.setRole(roleModel);
+                }
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
             return user;
         } catch (SQLException e) {

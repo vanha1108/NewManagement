@@ -4,9 +4,11 @@ import ha.hoclaptrinhweb.dao.IUSerDAO;
 import ha.hoclaptrinhweb.model.CategoryModel;
 import ha.hoclaptrinhweb.model.NewModel;
 import ha.hoclaptrinhweb.model.UserModel;
+import ha.hoclaptrinhweb.paging.Pageble;
 import ha.hoclaptrinhweb.service.IUserService;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -48,6 +50,11 @@ public class UserService implements IUserService {
 	public UserModel findById(long id) {
 		UserModel newModel = userDAO.findById(id);
 		return newModel;
+	}
+
+	@Override
+	public List<UserModel> findAll(Pageble pageble) {
+		return userDAO.findAll(pageble);
 	}
 
 	@Override
