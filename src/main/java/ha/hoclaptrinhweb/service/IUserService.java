@@ -1,5 +1,6 @@
 package ha.hoclaptrinhweb.service;
 
+import ha.hoclaptrinhweb.model.CategoryModel;
 import ha.hoclaptrinhweb.model.UserModel;
 import ha.hoclaptrinhweb.paging.Pageble;
 
@@ -16,7 +17,9 @@ public interface IUserService {
     
     UserModel findById(long id);
 
-    List<UserModel> findAll(Pageble pageble);
+    UserModel findByUserName(String userName);
+
+    List<UserModel> findAll();
     
     int getTotalItem();
 }

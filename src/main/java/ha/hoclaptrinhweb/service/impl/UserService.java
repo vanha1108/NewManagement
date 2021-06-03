@@ -32,7 +32,7 @@ public class UserService implements IUserService {
 	@Override
 	public UserModel update(UserModel updateModel) {
 		UserModel oldUser = userDAO.findById(updateModel.getId());
-		
+
 		updateModel.setCreatedDate(oldUser.getCreatedDate());
 		updateModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
 		updateModel.setCreatedBy(oldUser.getCreatedBy());
@@ -53,8 +53,13 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public List<UserModel> findAll(Pageble pageble) {
-		return userDAO.findAll(pageble);
+	public UserModel findByUserName(String userName) {
+		return userDAO.findByUserName(userName);
+	}
+
+	@Override
+	public List<UserModel> findAll() {
+		return userDAO.findAll();
 	}
 
 	@Override
