@@ -26,7 +26,7 @@ public class UserMapper implements RowMapper<UserModel> {
                     user.setRole(roleModel);
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+
             }
             return user;
         } catch (SQLException e) {
