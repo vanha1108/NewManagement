@@ -26,6 +26,7 @@ ha\hoclaptrinhweb\service\INewService.class
 ha\hoclaptrinhweb\mapper\CategoryMapper.class
 ha\hoclaptrinhweb\paging\PageRequest.class
 ha\hoclaptrinhweb\service\ICategoryService.class
+ha\hoclaptrinhweb\controller\admin\UserController.class
 ha\hoclaptrinhweb\dao\impl\UserDAO.class
 ha\hoclaptrinhweb\admin\api\NewAPI.class
 ha\hoclaptrinhweb\service\impl\NewService.class

@@ -71,5 +71,7 @@
 
 <script type="text/javascript"
         src="<c:url value='/template/web/makup/js/custom.js' />"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.2/Chart.bundle.js"/>
 </body>
 </html>

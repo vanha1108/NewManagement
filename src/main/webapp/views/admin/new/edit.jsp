@@ -17,10 +17,7 @@
                 }
             </script>
             <ul class="breadcrumb">
-                <li>
-                    <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Trang chủ</a>
-                </li>
+                <li><i class="ace-icon fa fa-home home-icon"></i> <a href="<c:url value="/admin-home"/>">Trang chủ</a></li>
                 <li class="active">Chỉnh sửa bài viết</li>
             </ul><!-- /.breadcrumb -->
         </div>

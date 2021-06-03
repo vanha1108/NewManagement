@@ -20,6 +20,7 @@ C:\Users\nguye\Desktop\WORK\WebTinTuc\NewManagement\src\main\java\ha\hoclaptrinh
 C:\Users\nguye\Desktop\WORK\WebTinTuc\NewManagement\src\main\java\ha\hoclaptrinhweb\dao\impl\NewDAO.java
 C:\Users\nguye\Desktop\WORK\WebTinTuc\NewManagement\src\main\java\ha\hoclaptrinhweb\mapper\RowMapper.java
 C:\Users\nguye\Desktop\WORK\WebTinTuc\NewManagement\src\main\java\ha\hoclaptrinhweb\service\impl\UserService.java
+C:\Users\nguye\Desktop\WORK\WebTinTuc\NewManagement\src\main\java\ha\hoclaptrinhweb\controller\admin\UserController.java
 C:\Users\nguye\Desktop\WORK\WebTinTuc\NewManagement\src\main\java\ha\hoclaptrinhweb\mapper\NewMapper.java
 C:\Users\nguye\Desktop\WORK\WebTinTuc\NewManagement\src\main\java\ha\hoclaptrinhweb\filter\AuthorizationFilter.java
 C:\Users\nguye\Desktop\WORK\WebTinTuc\NewManagement\src\main\java\ha\hoclaptrinhweb\utils\HttpUtil.java
