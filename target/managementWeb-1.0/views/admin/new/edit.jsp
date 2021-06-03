@@ -33,18 +33,18 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label no-padding-right">Thể loại</label>
                             <div class="col-sm-9">
-                                <select class="form-control" id="categoryCode" name="categoryCode">
-                                    <c:if test="${empty model.categoryCode}">
+                                <select class="form-control" id="categoryId" name="categoryId">
+                                    <c:if test="${empty model.categoryId}">
                                         <option value="">Chọn loại bài viết</option>
                                         <c:forEach var="item" items="${categories}" >
-                                            <option value="${item.code}">${item.name}</option>
+                                            <option value="${item.id}">${item.name}</option>
                                         </c:forEach>
                                     </c:if>
 
-                                    <c:if test="${not empty model.categoryCode}">
+                                    <c:if test="${not empty model.categoryId}">
                                         <option value="">Chọn loại bài viết</option>
                                         <c:forEach var="item" items="${categories}" >
-                                            <option value="${item.code}" <c:if test="${item.code == model.categoryCode}">selected="selected"</c:if> >${item.name}</option>
+                                            <option value="${item.id}" <c:if test="${item.id == model.categoryId}">selected="selected"</c:if> >${item.name}</option>
                                         </c:forEach>
                                     </c:if>
                                 </select>

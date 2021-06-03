@@ -13,6 +13,7 @@ ha\hoclaptrinhweb\paging\Pageble.class
 ha\hoclaptrinhweb\utils\MessageUtil.class
 ha\hoclaptrinhweb\dao\INewDAO.class
 ha\hoclaptrinhweb\utils\SessionUtil.class
+ha\hoclaptrinhweb\controller\admin\CategoryController.class
 ha\hoclaptrinhweb\utils\FormUtil.class
 ha\hoclaptrinhweb\service\IUserService.class
 ha\hoclaptrinhweb\mapper\UserMapper.class
