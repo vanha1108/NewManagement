@@ -59,9 +59,10 @@ public class HomeController extends HttpServlet {
 			model = userService.findByUsernameAndPasswordAndStatus(model.getUserName(), model.getPassword(), 1);
 			if (model != null) {
 				SessionUtil.getInstance().putValue(request, "USERMODEL", model);
-				if (model.getRole().getCode().equals(SystemConstant.USER)) {
+				System.out.println(model.getRole());
+				if (model.getRole().getName().equals(SystemConstant.USER)) {
 					response.sendRedirect(request.getContextPath()+"/trang-chu");
-				} else if( model.getRole().getCode().equals(SystemConstant.ADMIN)) {
+				} else if( model.getRole().getName().equals(SystemConstant.ADMIN)) {
 					response.sendRedirect(request.getContextPath()+"/admin-home");
 				}
 			} else {

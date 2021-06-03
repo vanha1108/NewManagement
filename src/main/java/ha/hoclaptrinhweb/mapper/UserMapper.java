@@ -20,7 +20,6 @@ public class UserMapper implements  RowMapper<UserModel>{
             user.setRoleId(resultSet.getLong("roleId"));
             try {
                 RoleModel roleModel = new RoleModel();
-                roleModel.setCode(resultSet.getString("code"));
                 roleModel.setName(resultSet.getString("name"));
                 user.setRole(roleModel);
             } catch (Exception e) {

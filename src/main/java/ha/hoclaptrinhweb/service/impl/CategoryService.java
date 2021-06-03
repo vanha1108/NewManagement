@@ -27,6 +27,12 @@ public class CategoryService implements ICategoryService {
 	}
 
 	@Override
+	public CategoryModel findByName(String name) {
+		CategoryModel categoryModel = categoryDao.findByName(name);
+		return  categoryModel;
+	}
+
+	@Override
 	public CategoryModel save(CategoryModel newCategory) {
 		newCategory.setCreatedDate(new Timestamp(System.currentTimeMillis()));
 		newCategory.setModifiedDate(new Timestamp(System.currentTimeMillis()));
@@ -48,11 +54,8 @@ public class CategoryService implements ICategoryService {
 	}
 
 	@Override
-	public void delete(long[] ids) {
-		for(long id:ids) {
-			categoryDao.delete(id);
-		}
-		
+	public void delete(long id) {
+		categoryDao.delete(id);
 	}
 
 	@Override

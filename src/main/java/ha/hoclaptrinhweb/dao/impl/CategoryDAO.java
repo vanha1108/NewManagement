@@ -24,15 +24,22 @@ public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategory
     }
 
 	@Override
+	public CategoryModel findByName(String name) {
+		String sql ="select * from category where name = N?";
+		List<CategoryModel> category = query(sql,new CategoryMapper(),name);
+		return  category.isEmpty() ? null:category.get(0);
+	}
+
+	@Override
 	public Long save(CategoryModel categoryModel) {
-		StringBuilder sql = new StringBuilder("INSERT INTO category (name)");
+		StringBuilder sql = new StringBuilder("INSERT INTO category (name,count_use)");
 		sql.append("createddate, createdby) VALUES (?)");
 		return insert(sql.toString(),categoryModel.getName());
 	}
 
 	@Override
 	public void update(CategoryModel updateCategory) {
-		StringBuilder sql = new StringBuilder("UPDATE category set name = ? where id = ?");
+		StringBuilder sql = new StringBuilder("UPDATE category set name = ? and count_use = ? where id = ?");
 		update(sql.toString(),updateCategory.getName(), updateCategory.getId());
 		
 	}

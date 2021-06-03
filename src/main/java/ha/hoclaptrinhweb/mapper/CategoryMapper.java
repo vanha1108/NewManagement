@@ -13,6 +13,7 @@ public class CategoryMapper implements RowMapper<CategoryModel> {
 			CategoryModel category = new CategoryModel();
 			category.setId(resultSet.getLong("id"));
 			category.setName(resultSet.getString("name"));
+			category.setCount_use(resultSet.getInt("count_use"));
 			return category;
 		} catch (SQLException e) {
 			return null;

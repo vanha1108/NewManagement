@@ -8,12 +8,14 @@ public interface ICategoryService {
 	List<CategoryModel> findAll();
 	
 	CategoryModel findOne(long id);
+
+	CategoryModel findByName(String name);
 	
 	CategoryModel save(CategoryModel newCatgory) ;
 	
 	CategoryModel update(CategoryModel updateCategory);
 	
-	void delete(long[] ids);
+	void delete(long id);
 	
 	int getTotalItem();
 }

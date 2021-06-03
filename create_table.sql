@@ -36,6 +36,7 @@ CREATE TABLE news (
 CREATE TABLE category (
   id bigint NOT NULL PRIMARY KEY auto_increment,
   name NVARCHAR(255) NOT NULL,
+  count_use int NOT NULL ,
   createddate TIMESTAMP NULL,
   modifieddate TIMESTAMP NULL,
   createdby VARCHAR(255) NULL,

@@ -10,6 +10,8 @@ public interface ICategoryDAO extends GenericDAO<CategoryModel> {
 	List<CategoryModel> findAll();
 	
 	CategoryModel findOne(Long id);
+
+	CategoryModel findByName(String name);
 	
     Long save(CategoryModel categoryModel);
 	

@@ -7,6 +7,8 @@ public class CategoryModel extends AbstractModel<CategoryModel>{
 	private Long id;
 	
 	private String name;
+
+	private  int count_use;
 	
 	public String getName() {
 		return name;
@@ -20,5 +22,12 @@ public class CategoryModel extends AbstractModel<CategoryModel>{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
+	public int getCount_use() {
+		return count_use;
+	}
+
+	public void setCount_use(int count_use) {
+		this.count_use = count_use;
+	}
 }

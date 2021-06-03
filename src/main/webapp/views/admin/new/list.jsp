@@ -38,14 +38,14 @@
                                         <a flag="info"
                                            class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
                                            data-toggle="tooltip"
-                                           title='Thêm bài viết' href='<c:url value="/admin-new?type=edit"/>'>
+                                           title='Thêm danh mục' href='<c:url value="/admin-category?type=edit"/>'>
 															<span>
 																<i class="fa fa-plus-circle bigger-110 purple"></i>
 															</span>
                                         </a>
                                         <button id="btnDelete" type="button"
                                                 class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-                                                data-toggle="tooltip" title='Xóa bài viết'>
+                                                data-toggle="tooltip" title='Xóa danh mục'>
 																<span>
 																	<i class="fa fa-trash-o bigger-110 pink"></i>
 																</span>
@@ -60,7 +60,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th><input type="checkbox" id="checkAll"}"></th>
+                                            <th><input type="checkbox" id="checkAll"></th>
                                             <th>Tên bài viết</th>
                                             <th>Mô tả ngắn</th>
                                             <th>Thao tác</th>
@@ -74,7 +74,7 @@
                                                 <td>${item.shortDescription}
                                                 <td>
                                                     <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                                       title="Cập nhật bài viết" href='<c:url value="/admin-new?type=edit&id=${item.id}"/>'><i
+                                                       title="Cập nhật danh mục" href='<c:url value="/admin-category?type=edit&id=${item.id}"/>'><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
