@@ -184,11 +184,11 @@
         $.each(formData, function (i, v) {
             data["" + v.name + ""] = v.value;
         });
-        console.log("HEREEEEEEEEEEEEEEEE");
+        console.log("HHHHHHHHHHHJJJJJJ " + document.querySelector('#image').files[0]);
         if (document.querySelector('#image').files[0]) {
             var file = document.querySelector('#image').files[0];
-            console.log("HHHHHHHHHH:   "+file.fileName);
             var endcodeString  = await toBase64(file);
+            console.log("XXXXXXXX: " + endcodeString);
             data['thumbnail'] = endcodeString;
         }
         data['content'] = CKEDITOR.instances['content'].getData();

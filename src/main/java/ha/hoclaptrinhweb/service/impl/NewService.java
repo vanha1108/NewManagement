@@ -39,6 +39,9 @@ public class NewService implements INewService {
     @Override
     public NewModel update(NewModel updateNew) {
         NewModel oldNew = newDao.findOne(updateNew.getId());
+        if(updateNew.getThumbnail() == null) {
+            updateNew.setThumbnail(oldNew.getThumbnail());
+        }
         updateNew.setCreatedDate(oldNew.getCreatedDate());
         updateNew.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         updateNew.setCreatedBy(oldNew.getCreatedBy());
