@@ -5,47 +5,50 @@
     <!-- <header class="tech-header header"> -->
     <div class="container-fluid">
         <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="tech-index.html"><img src="images/version/tech-logo.png" alt=""></a>
+            <a class="navbar-brand" href=""><img src="" alt=""></a>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="tech-index.html">Home</a>
+                        <a class="nav-link" href="tech-index.html">Tất cả</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tech-category-01.html">Gadgets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tech-category-02.html">Videos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tech-category-03.html">Reviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tech-contact.html">Contact Us</a>
-                    </li>
+                    <c:forEach var="item" items="${topCategory}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="tech-index.html">${item.name}</a>
+                        </li>
+                    </c:forEach>
+                    <c:if test="${not empty childCategory}">
+                        <li class="nav-item dropdown has-submenu menu-large hidden-md-down hidden-sm-down hidden-xs-down">
+                            <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown">Khác</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                                <li>
+                                    <div class="container">
+                                        <div class="mega-menu-content clearfix">
+                                            <div class="tab">
+                                                <button class="tablinks">Science</button>
+                                                <button class="tablinks">Technology</button>
+                                                <button class="tablinks">Social Media</button>
+                                                <button class="tablinks">Car News</button>
+                                                <button class="tablinks">Worldwide</button>
+                                            </div>
+                                        </div><!-- end mega-menu-content -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </c:if>
+
+
                 </ul>
             </div>
         </nav>
     </div>
 </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <%--<div id="wrapper">--%>
