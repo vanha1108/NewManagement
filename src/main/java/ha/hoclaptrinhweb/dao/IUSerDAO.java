@@ -16,8 +16,10 @@ public interface IUSerDAO {
     
     void delete(Long id);
     
-    List<UserModel> findAll(Pageble pageble);
+    List<UserModel> findAll();
     
     int getTotalItem();
+
+    UserModel findByUserName(String userName);
     
 }

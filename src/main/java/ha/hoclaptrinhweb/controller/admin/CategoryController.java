@@ -3,10 +3,7 @@ package ha.hoclaptrinhweb.controller.admin;
 import ha.hoclaptrinhweb.constant.SystemConstant;
 import ha.hoclaptrinhweb.model.CategoryModel;
 import ha.hoclaptrinhweb.model.UserModel;
-import ha.hoclaptrinhweb.paging.PageRequest;
-import ha.hoclaptrinhweb.paging.Pageble;
 import ha.hoclaptrinhweb.service.ICategoryService;
-import ha.hoclaptrinhweb.sort.Sorter;
 import ha.hoclaptrinhweb.utils.FormUtil;
 import ha.hoclaptrinhweb.utils.MessageUtil;
 import ha.hoclaptrinhweb.utils.SessionUtil;
@@ -32,10 +29,8 @@ public class CategoryController extends HttpServlet {
 
 
         if (categoryModel.getType().equals(SystemConstant.LIST)) {
-//            Pageble pageble = new PageRequest(categoryModel.getPage(), categoryModel.getMaxPageItem(),  new Sorter(categoryModel.getSortName(), categoryModel.getSortBy()));
             categoryModel.setListResult(categoryService.findAll());
             categoryModel.setTotalItem(categoryService.getTotalItem());
-//            categoryModel.setTotalPage((int) Math.ceil((double) categoryModel.getTotalItem() / categoryModel.getMaxPageItem()));
             viewPath = "views/admin/category/list.jsp";
         } else if (categoryModel.getType().equals(SystemConstant.ADD)) {
             viewPath = "views/admin/category/edit.jsp";
@@ -50,7 +45,6 @@ public class CategoryController extends HttpServlet {
                 if (findCategory != null) {
                     categoryService.delete(categoryModel.getId());
                 }
-
                 categoryModel.setListResult(categoryService.findAll());
                 categoryModel.setTotalItem(categoryService.getTotalItem());
             }
@@ -58,7 +52,7 @@ public class CategoryController extends HttpServlet {
             viewPath = "views/admin/category/list.jsp";
         }
 
-        UserModel userRole = (UserModel) SessionUtil.getInstance().getValue(req,"USERMODEL");
+        UserModel userRole = (UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL");
 
         req.setAttribute(SystemConstant.ROLE, userRole.getRole().getName());
 
@@ -79,7 +73,7 @@ public class CategoryController extends HttpServlet {
 
         String strId = req.getParameter("id");
         Long id = -1L;
-        if(strId != null){
+        if (strId != null) {
             id = Long.parseLong(strId);
         }
         String name = req.getParameter("name");

@@ -71,10 +71,10 @@
                                                 <td>
                                                     <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
                                                        title="Cập nhật thông tin tài khoản"
-                                                       href='<c:url value="/admin-category?type=edit&id=${item.id}"/>'><i
+                                                       href='<c:url value="/admin-user?type=edit&id=${item.id}"/>'><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     </a>
-                                                    <a href='<c:url value="/admin-category?type=delete&id=${item.id}" />'
+                                                    <a href='<c:url value="/admin-user?type=delete&id=${item.id}" />'
                                                        class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
                                                        data-toggle="tooltip" title='Xóa danh mục'>
 																<span>
