@@ -20,7 +20,7 @@ public interface INewDAO extends GenericDAO<NewModel> {
 
 	List<NewModel> findTopView(int number);
 
-	List<NewModel> findByCategory(Long categoryId, int limit);
+	List<NewModel> findByCategory(Long categoryId, Pageble pageble);
 
 	void upViewClick(Long id);
 

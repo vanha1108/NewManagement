@@ -75,8 +75,8 @@ public class NewService implements INewService {
     }
 
     @Override
-    public List<NewModel> findByCategory(Long categoryId, int limit) {
-        return newDao.findByCategory(categoryId,limit);
+    public List<NewModel> findByCategory(Long categoryId, Pageble pageble) {
+        return newDao.findByCategory(categoryId,pageble);
     }
 
     @Override

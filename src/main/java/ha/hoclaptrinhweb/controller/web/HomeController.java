@@ -83,8 +83,10 @@ public class HomeController extends HttpServlet {
             //Load tin tức
             NewModel model = FormUtil.toModel(NewModel.class, request);
             int page = 1;
-            if(model.getPage() != 1 && model.getPage()>0){
-                page = model.getPage();
+            if(model.getPage()!= null){
+                if(model.getPage() != 1 && model.getPage()>0){
+                    page = model.getPage();
+                }
             }
             Pageble pageble = new PageRequest(page, 10,new Sorter("createddate","desc"));
 
@@ -100,7 +102,7 @@ public class HomeController extends HttpServlet {
             model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getMaxPageItem()));
 			request.setAttribute("listNew", model.getListResult());
 
-			List<NewModel> topNews = newService.findTopView(2);
+			List<NewModel> topNews = newService.findTopView(5);
 			request.setAttribute("topNew",topNews);
 
             RequestDispatcher rd = request.getRequestDispatcher("views/web/home.jsp");

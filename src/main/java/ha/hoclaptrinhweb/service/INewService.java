@@ -19,7 +19,7 @@ public interface INewService {
 
     List<NewModel> findTopView(int number);
 
-    List<NewModel > findByCategory(Long categoryId, int limit);
+    List<NewModel > findByCategory(Long categoryId, Pageble pageble);
 
     int getTotalItem();
 

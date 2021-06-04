@@ -26,12 +26,12 @@ public class ViewByCategoryController extends HttpServlet {
     private INewService newService;
 
     @Inject
-    private  ICategoryService categoryService;
+    private ICategoryService categoryService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         NewModel model = FormUtil.toModel(NewModel.class, req);
-        String viewPath="";
+        String viewPath = "";
 
         //Load data for category
         List<CategoryModel> topCategory = categoryService.findAll();
@@ -51,27 +51,32 @@ public class ViewByCategoryController extends HttpServlet {
         req.setAttribute("topCategory", topCategory);
         req.setAttribute("childCategory", categoryChildList);
 
+        int page = 1;
 
-        //Load new by category
-        if(model.getType().equals("list")){
-            List<NewModel> newModelList = newService.findByCategory(model.getId(),10);
-            CategoryModel category = categoryService.findOne(model.getId());
-
-            if(category != null){
-                model.setCategoryName(category.getName());
+        if(model.getPage() != null){
+            if(model.getPage() != 1 && model.getPage()>0){
+                page = model.getPage();
             }
-
-            model.setListResult(newModelList);
-            model.setTotalItem(newModelList.size());
-            model.setTotalPage(newModelList.size()/10);
-
-            req.setAttribute("model",model);
-
         }
+        Pageble pageble = new PageRequest(page, 10,new Sorter("createddate","desc"));
+
+        List<NewModel> newModelList = newService.findByCategory(model.getId(), pageble);
+        CategoryModel category = categoryService.findOne(model.getId());
+
+        if (category != null) {
+            model.setCategoryName(category.getName());
+        }
+
+        model.setListResult(newModelList);
+        model.setTotalItem(newModelList.size());
+        model.setTotalPage(newModelList.size() / 10);
+
+        req.setAttribute("model", model);
+
 
         //Load topview
         List<NewModel> topNews = newService.findTopView(2);
-        req.setAttribute("topNew",topNews);
+        req.setAttribute("topNew", topNews);
 
         viewPath = "/views/web/view-by-category.jsp";
         RequestDispatcher rd = req.getRequestDispatcher(viewPath);
