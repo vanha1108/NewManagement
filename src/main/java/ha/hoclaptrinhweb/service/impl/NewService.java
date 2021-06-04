@@ -39,6 +39,9 @@ public class NewService implements INewService {
     @Override
     public NewModel update(NewModel updateNew) {
         NewModel oldNew = newDao.findOne(updateNew.getId());
+        if(updateNew.getThumbnail() == null) {
+            updateNew.setThumbnail(oldNew.getThumbnail());
+        }
         updateNew.setCreatedDate(oldNew.getCreatedDate());
         updateNew.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         updateNew.setCreatedBy(oldNew.getCreatedBy());
@@ -53,6 +56,11 @@ public class NewService implements INewService {
         for (long id : ids) {
             // delete comment of new
             newDao.delete(id);
+            NewModel newModel = newDao.findOne(id);
+            CategoryModel categoryModel = categoryDAO.findOne(newModel.getCategoryId());
+            int countUse = categoryModel.getCount_use();
+            categoryModel.setCount_use(countUse - 1);
+            categoryDAO.update(categoryModel);
         }
     }
 
@@ -74,6 +82,11 @@ public class NewService implements INewService {
     @Override
     public int getTotalItem() {
         return newDao.getTotalItem();
+    }
+
+    @Override
+    public void upViewClick(Long id) {
+        newDao.upViewClick(id);
     }
 
     @Override

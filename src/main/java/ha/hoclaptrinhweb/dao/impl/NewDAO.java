@@ -35,10 +35,9 @@ public class NewDAO extends AbstractDAO<NewModel> implements INewDAO {
     public void update(NewModel updateNew) {
         StringBuilder sql = new StringBuilder("UPDATE news SET title = ?, thumbnail = ?,");
         sql.append(" shortdescription = ?, content = ?, categoryid = ?,");
-        sql.append(" createddate = ?, createdby = ?, modifieddate = ?, modifiedby = ? WHERE id = ?");
+        sql.append(" modifieddate = ?, modifiedby = ? WHERE id = ?");
         update(sql.toString(), updateNew.getTitle(), updateNew.getThumbnail(), updateNew.getShortDescription(),
-                updateNew.getContent(), updateNew.getCategoryId(), updateNew.getCreatedDate(),
-                updateNew.getCreatedBy(), updateNew.getModifiedDate(),
+                updateNew.getContent(), updateNew.getCategoryId(), updateNew.getModifiedDate(),
                 updateNew.getModifiedBy(), updateNew.getId());
     }
 
@@ -73,6 +72,12 @@ public class NewDAO extends AbstractDAO<NewModel> implements INewDAO {
     public List<NewModel> findByCategory(Long categoryId,int limit) {
         String sql ="select * from news where categoryid = ? limit ?";
         return  query(sql, new NewMapper(), categoryId,limit );
+    }
+
+    @Override
+    public void upViewClick(Long id) {
+        String sql ="update news set viewclick = viewclick + 1 where id = ?";
+        update(sql,id);
     }
 
     @Override

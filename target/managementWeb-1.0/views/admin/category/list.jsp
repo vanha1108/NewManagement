@@ -16,10 +16,7 @@
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                 <ul class="breadcrumb">
-                    <li>
-                        <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="#">Trang chủ</a>
-                    </li>
+                    <li><i class="ace-icon fa fa-home home-icon"></i> <a href="<c:url value="/admin-home"/>">Trang chủ</a></li>
                 </ul>
                 <!-- /.breadcrumb -->
             </div>

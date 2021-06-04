@@ -21,6 +21,8 @@ public interface INewDAO extends GenericDAO<NewModel> {
 	List<NewModel> findTopView(int number);
 
 	List<NewModel> findByCategory(Long categoryId, int limit);
-	
+
+	void upViewClick(Long id);
+
 	int getTotalItem();
 }

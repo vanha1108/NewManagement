@@ -23,5 +23,7 @@ public interface INewService {
 
     int getTotalItem();
 
+    void upViewClick(Long id);
+
     NewModel findOne(long id);
 } 

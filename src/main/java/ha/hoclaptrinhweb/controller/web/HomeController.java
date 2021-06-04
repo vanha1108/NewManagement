@@ -82,7 +82,11 @@ public class HomeController extends HttpServlet {
 
             //Load tin tức
             NewModel model = FormUtil.toModel(NewModel.class, request);
-            Pageble pageble = new PageRequest(1, 10,new Sorter("createddate","desc"));
+            int page = 1;
+            if(model.getPage() != 1 && model.getPage()>0){
+                page = model.getPage();
+            }
+            Pageble pageble = new PageRequest(page, 10,new Sorter("createddate","desc"));
 
             List<NewModel> newModels = newService.findAll(pageble);
             for (NewModel newModel: newModels) {

@@ -53,6 +53,7 @@ public class ViewDetailNewController extends HttpServlet {
         //End load category
 
         //Load detail
+        newService.upViewClick(model.getId());
         NewModel detail = newService.findOne(model.getId());
 
         if(detail != null){

@@ -17,10 +17,7 @@
                 }
             </script>
             <ul class="breadcrumb">
-                <li>
-                    <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Trang chủ</a>
-                </li>
+                <li><i class="ace-icon fa fa-home home-icon"></i> <a href="<c:url value="/admin-home"/>">Trang chủ</a></li>
                 <li class="active">Chỉnh sửa bài viết</li>
             </ul><!-- /.breadcrumb -->
         </div>
@@ -184,11 +181,11 @@
         $.each(formData, function (i, v) {
             data["" + v.name + ""] = v.value;
         });
-        console.log("HEREEEEEEEEEEEEEEEE");
+        console.log("HHHHHHHHHHHJJJJJJ " + document.querySelector('#image').files[0]);
         if (document.querySelector('#image').files[0]) {
             var file = document.querySelector('#image').files[0];
-            console.log("HHHHHHHHHH:   "+file.fileName);
             var endcodeString  = await toBase64(file);
+            console.log("XXXXXXXX: " + endcodeString);
             data['thumbnail'] = endcodeString;
         }
         data['content'] = CKEDITOR.instances['content'].getData();
