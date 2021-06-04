@@ -64,6 +64,18 @@ public class NewDAO extends AbstractDAO<NewModel> implements INewDAO {
     }
 
     @Override
+    public List<NewModel> findTopView(int number) {
+        String sql = "select * from news order by viewclick desc limit ?";
+        return query(sql, new NewMapper(), number);
+    }
+
+    @Override
+    public List<NewModel> findByCategory(Long categoryId,int limit) {
+        String sql ="select * from news where categoryid = ? limit ?";
+        return  query(sql, new NewMapper(), categoryId,limit );
+    }
+
+    @Override
     public int getTotalItem() {
         String sql = "SELECT count(*) FROM news";
         return count(sql);

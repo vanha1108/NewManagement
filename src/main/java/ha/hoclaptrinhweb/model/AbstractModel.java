@@ -8,6 +8,7 @@ public class AbstractModel<T> {
 
     private Long id;
     private Timestamp createdDate;
+    private  String disCreateDate;
     private Timestamp modifiedDate;
     private String createdBy;
     private String modifiedBy;
@@ -155,5 +156,13 @@ public class AbstractModel<T> {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getDisCreateDate() {
+        return disCreateDate;
+    }
+
+    public void setDisCreateDate(String disCreateDate) {
+        this.disCreateDate = disCreateDate;
     }
 }

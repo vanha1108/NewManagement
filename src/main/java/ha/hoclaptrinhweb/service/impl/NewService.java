@@ -62,6 +62,16 @@ public class NewService implements INewService {
     }
 
     @Override
+    public List<NewModel> findTopView(int number) {
+        return newDao.findTopView(number);
+    }
+
+    @Override
+    public List<NewModel> findByCategory(Long categoryId, int limit) {
+        return newDao.findByCategory(categoryId,limit);
+    }
+
+    @Override
     public int getTotalItem() {
         return newDao.getTotalItem();
     }

@@ -15,38 +15,35 @@
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                     <div class="page-wrapper">
                         <div class="blog-top clearfix">
-                            <h4 class="pull-left">Tin mới đăng <a href="#"><i class="fa fa-rss"></i></a></h4>
-                        </div><!-- end blog-top -->
+                            <h4 class="pull-left">Tin mới đăng <a><i class="fa fa-rss"></i></a></h4>
+                        </div>
 
                         <div class="blog-list clearfix">
-                            <div class="blog-box row">
-                                <div class="col-md-4">
-                                    <div class="post-media">
-                                        <a href="<c:url value='/views/web/view-detail.jsp'/> " title="">
-                                            <img src="<c:url value="/template/web/upload/author.jpg"/>" alt=""
-                                                 class="img-fluid">
-                                            <div class="hovereffect"></div>
-                                        </a>
-                                    </div><!-- end media -->
-                                </div><!-- end col -->
+                            <c:forEach var="item" items="${listNew}">
+                                <div class="blog-box row">
+                                    <div class="col-md-4">
+                                        <div class="post-media">
+                                            <a href='<c:url value="/chi-tiet?id=${item.id}"/>'>
+                                                <img src="${item.thumbnail}" alt="" class="img-fluid">
+                                                <div class="hovereffect"></div>
+                                            </a>
+                                        </div><!-- end media -->
+                                    </div><!-- end col -->
 
-                                <div class="blog-meta big-meta col-md-8">
-                                    <h4><a href="<c:url value='/views/web/view-detail.jsp'/>">Top 10 điện thoại và công
-                                        nghệ nổi bật 2021</a></h4>
-                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et
-                                        pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh,
-                                        maximus ac felis nec, maximus tempor odio.</p>
-                                    <small class="firstsmall"><a class="bg-orange"
-                                                                 href="<c:url value='/views/web/view-by-category.jsp'/> ">Gadgets</a></small>
-                                    <small><a href="tech-single.html" title="">21 July, 2017</a></small>
-                                    <small><a href="tech-author.html" title="">by Matilda</a></small>
-                                    <small><a href="tech-single.html" title=""><i class="fa fa-eye"></i>
-                                        1114</a></small>
-                                </div><!-- end meta -->
-                            </div><!-- end blog-box -->
+                                    <div class="blog-meta big-meta col-md-8">
+                                        <h4><a href='<c:url value="/chi-tiet?id=${item.id}"/>'>${item.title}</a></h4>
+                                        <p>${item.shortDescription}</p>
+                                        <small class="firstsmall"><a class="bg-orange" href='<c:url value="/danh-muc?type=list&id=${item.categoryId}"/>' title="">${item.categoryName}</a></small>
+                                        <small><a href='<c:url value="/chi-tiet?id=${item.id}"/>'>${item.disCreateDate}</a></small>
+                                        <small><a href='<c:url value="/chi-tiet?id=${item.id}"/>'><i class="fa fa-eye"></i>${item.viewClick}</a></small>
+                                    </div>
+                                </div>
 
-                        </div><!-- end blog-list -->
-                    </div><!-- end page-wrapper -->
+                                <hr class="invis">
+                            </c:forEach>
+                        </div>
+
+                    </div>
 
                     <hr class="invis">
 
@@ -62,109 +59,44 @@
                                     </li>
                                 </ul>
                             </nav>
-                        </div><!-- end col -->
-                    </div><!-- end row -->
-                </div><!-- end col -->
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                     <div class="sidebar">
                         <div class="widget">
                             <div class="banner-spot clearfix">
                                 <div class="banner-img">
-                                    <img src="upload/banner_07.jpg" alt="" class="img-fluid">
-                                </div><!-- end banner-img -->
-                            </div><!-- end banner -->
-                        </div><!-- end widget -->
+                                    <img src='<c:url value="/template/web/upload/5k.png"/>' class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="widget">
-                            <h2 class="widget-title">Phổ biến</h2>
-                            <div class="blog-list-widget">
-                                <div class="list-group">
-                                    <a href="tech-single.html"
-                                       class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="w-100 justify-content-between">
-                                            <img src="upload/tech_blog_08.jpg" alt="" class="img-fluid float-left">
-                                            <h5 class="mb-1">5 Beautiful buildings you need..</h5>
-                                            <small>12 Jan, 2016</small>
-                                        </div>
-                                    </a>
-
-                                    <a href="tech-single.html"
-                                       class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="w-100 justify-content-between">
-                                            <img src="upload/tech_blog_01.jpg" alt="" class="img-fluid float-left">
-                                            <h5 class="mb-1">Let's make an introduction for..</h5>
-                                            <small>11 Jan, 2016</small>
-                                        </div>
-                                    </a>
-
-                                    <a href="tech-single.html"
-                                       class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="w-100 last-item justify-content-between">
-                                            <img src="upload/tech_blog_03.jpg" alt="" class="img-fluid float-left">
-                                            <h5 class="mb-1">Did you see the most beautiful..</h5>
-                                            <small>07 Jan, 2016</small>
-                                        </div>
-                                    </a>
+                            <h2 class="widget-title">Quan tâm</h2>
+                            <div class="trend-videos">
+                                <c:forEach var="best" items="${topNew}">
+                                <div class="blog-box">
+                                    <div class="post-media">
+                                        <a href='<c:url value="/chi-tiet?id=${best.id}"/>'>
+                                            <img src="${best.thumbnail}" class="img-fluid">
+                                            <div class="hovereffect"></div>
+                                        </a>
+                                    </div>
+                                    <div class="blog-meta">
+                                        <h4><a href='<c:url value="/chi-tiet?id=${best.id}"/>'>${best.title}</a></h4>
+                                    </div>
                                 </div>
-                            </div><!-- end blog-list -->
-                        </div><!-- end widget -->
+                                <hr class="invis">
+                                </c:forEach>
+                            </div>
+                        </div>
 
-                        <div class="widget">
-                            <h2 class="widget-title">Đã xem gần đây</h2>
-                            <div class="blog-list-widget">
-                                <div class="list-group">
-                                    <a href="tech-single.html"
-                                       class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="w-100 justify-content-between">
-                                            <img src="upload/tech_blog_02.jpg" alt="" class="img-fluid float-left">
-                                            <h5 class="mb-1">Banana-chip chocolate cake recipe..</h5>
-                                            <span class="rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </span>
-                                        </div>
-                                    </a>
-
-                                    <a href="tech-single.html"
-                                       class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="w-100 justify-content-between">
-                                            <img src="upload/tech_blog_03.jpg" alt="" class="img-fluid float-left">
-                                            <h5 class="mb-1">10 practical ways to choose organic..</h5>
-                                            <span class="rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </span>
-                                        </div>
-                                    </a>
-
-                                    <a href="tech-single.html"
-                                       class="list-group-item list-group-item-action flex-column align-items-start">
-                                        <div class="w-100 last-item justify-content-between">
-                                            <img src="upload/tech_blog_07.jpg" alt="" class="img-fluid float-left">
-                                            <h5 class="mb-1">We are making homemade ravioli..</h5>
-                                            <span class="rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div><!-- end blog-list -->
-                        </div><!-- end widget -->
-                    </div><!-- end sidebar -->
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </div>
 </body>

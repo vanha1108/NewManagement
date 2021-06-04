@@ -17,6 +17,10 @@ public interface INewDAO extends GenericDAO<NewModel> {
 	void delete(long ids);
 	
 	List<NewModel> findAll(Pageble pageble);
+
+	List<NewModel> findTopView(int number);
+
+	List<NewModel> findByCategory(Long categoryId, int limit);
 	
 	int getTotalItem();
 }

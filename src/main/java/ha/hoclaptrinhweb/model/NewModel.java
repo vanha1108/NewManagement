@@ -11,6 +11,10 @@ public class NewModel extends AbstractModel<NewModel> {
 
     private Long categoryId;
 
+    private  String categoryName;
+
+    private  Long viewClick;
+
     public String getTitle() {
         return title;
     }
@@ -51,4 +55,19 @@ public class NewModel extends AbstractModel<NewModel> {
         this.categoryId = categoryId;
     }
 
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public Long getViewClick() {
+        return viewClick;
+    }
+
+    public void setViewClick(Long viewClick) {
+        this.viewClick = viewClick;
+    }
 }

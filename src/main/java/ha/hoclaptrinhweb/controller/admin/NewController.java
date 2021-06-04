@@ -36,6 +36,7 @@ public class NewController extends HttpServlet {
             throws ServletException, IOException {
         NewModel model = FormUtil.toModel(NewModel.class, request);
         String viewPath = "";
+
         if (model.getType().equals(SystemConstant.LIST)) {
             Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), new Sorter(model.getSortName(), model.getSortBy()));
             model.setListResult(newService.findAll(pageble));
