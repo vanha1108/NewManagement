@@ -12,18 +12,23 @@
     <div class="main-content-inner">
         <div class="breadcrumbs ace-save-state" id="breadcrumbs">
             <ul class="breadcrumb">
-                <li><i class="ace-icon fa fa-home home-icon"></i> <a href="<c:url value="/admin-home"/>">Trang chủ</a></li>
+                <li><i class="ace-icon fa fa-home home-icon"></i> <a href="<c:url value="/admin-home"/>">Trang chủ</a>
+                </li>
             </ul>
             <!-- /.breadcrumb -->
         </div>
         <div class="page-content">
             <div class="row">
+                <input type="hidden" id="totalCategory" name="totalCategory" value="${totalCategory}">
+                <input type="hidden" id="totalNew" name="totalNew" value="${totalNew}">
+                <input type="hidden" id="totalUser" name="totalUser" value="${totalUser}">
                 <h1 style="color: #4ebc30; font-family: 'Segoe UI';">Biểu đồ tổng quan</h1>
                 <canvas id="myCanvas" width="1000" height="500" style="display: block;"/>
                 <script type="text/javascript">
                     $(document).ready(function () {
                         createChart();
                     });
+
                     function createChart() {
                         var myChart = document.getElementById("myCanvas").getContext('2d');
                         var lables = [];
@@ -35,9 +40,12 @@
                         colors.push("rgba(255, 99, 132, 0.2)");
                         colors.push("rgba(75, 192, 192, 0.2)");
                         colors.push("rgba(255, 159, 64, 0.2)");
-                        values.push(10);
-                        values.push(25);
-                        values.push(3);
+                        var totalCategory = $('#totalCategory').val();
+                        var totalNew = $('#totalNew').val();
+                        var totalUser = $('#totalUser').val();
+                        values.push(totalCategory);
+                        values.push(totalNew);
+                        values.push(totalUser);
                         var chart = new Chart(myChart, {
                             type: 'horizontalBar',
                             data: {

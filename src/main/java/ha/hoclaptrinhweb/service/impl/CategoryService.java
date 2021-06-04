@@ -60,8 +60,7 @@ public class CategoryService implements ICategoryService {
 
 	@Override
 	public int getTotalItem() {
-		// TODO Auto-generated method stub
-		return 0;
+		return categoryDao.getTotalItem();
 	}
 
 }
