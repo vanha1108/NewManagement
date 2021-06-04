@@ -56,6 +56,11 @@ public class NewService implements INewService {
         for (long id : ids) {
             // delete comment of new
             newDao.delete(id);
+            NewModel newModel = newDao.findOne(id);
+            CategoryModel categoryModel = categoryDAO.findOne(newModel.getCategoryId());
+            int countUse = categoryModel.getCount_use();
+            categoryModel.setCount_use(countUse - 1);
+            categoryDAO.update(categoryModel);
         }
     }
 
